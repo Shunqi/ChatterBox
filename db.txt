@@ -15,8 +15,8 @@ db.userList.update({'name': 'charlie'}, {$set: {'friends':[{'name': 'alice', 'la
 db.userList.update({'name': 'david'}, {$set: {'friends':[{'name': 'alice', 'lastMsgId': '0'}, {'name': 'bob', 'lastMsgId': '0'}, {'name':'charlie', 'lastMsgId': '0'}]} })
 
 
-db.messageList.insert({'senderId': 'alice', 'receiverId': 'bob', 'message': 'alice to bob',
+db.messageList.insert({'senderId': "5a12e67332bb251bd4919a33", 'receiverId': "5a12e67332bb251bd4919a34", 'message': 'alice to bob',
 'date': 'Sun Oct 1 2017', 'time': '20:00:01'})
 
-db.messageList.insert({'senderId': 'bob', 'receiverId': 'alice', 'message': 'bob to alice',
+db.messageList.insert({'senderId': "5a12e67332bb251bd4919a34", 'receiverId': "5a12e67332bb251bd4919a33", 'message': 'bob to alice',
 'date': 'Sun Oct 1 2017', 'time': '20:02:02'})
