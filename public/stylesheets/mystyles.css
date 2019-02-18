@@ -1,0 +1,130 @@
+*{
+	box-sizing: border-box;
+}
+
+.container {
+    position: absolute;   
+    top: 50%;   
+    left: 50%; 
+    -webkit-transform: translate(-50%, -50%);   
+    -moz-transform: translate(-50%, -50%);   
+    -ms-transform: translate(-50%, -50%);   
+    -o-transform: translate(-50%, -50%);   
+    transform: translate(-50%, -50%); 
+    display: inline-block; 
+}
+
+#login {
+	text-align: center;
+}
+
+#login input {
+	width: 80px;
+}
+
+#heading {
+    width: 600px;
+    height: 100px;
+    text-align: center;
+}
+
+#heading div{
+    display: inline-block;
+    margin: 20px;
+}
+
+#heading img{
+    width: 50px;
+}
+
+#main {
+    text-align: center;
+}
+
+#content ul{
+    list-style: none;
+}
+
+#friendList {
+    border-style: solid;
+    float: left;
+    height: 400px;
+    width: 100px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.friend {
+    height: 25px;
+}
+
+.friend p{
+    margin: 0px;
+}
+
+#panel {
+    border-style: solid solid solid none;
+    height: 400px;
+    width: 500px;
+    display:inline-block;
+}
+
+.title {
+    position: absulute;
+    top: 10px;
+    height: 75px;
+    text-align: left;
+    padding: 5px;
+}
+
+.title img{
+    width: 60px;
+}
+
+#messages {
+    height: 290px;
+    overflow: scroll;
+    
+}
+
+#messages img{
+    width: 30px;
+}
+
+#sendMessage {
+    position: relative;
+    width: 400px;
+    height: 30px;
+    bottom: 0px;
+    margin-top: 5px;
+}
+
+
+#messageInput {
+    width: 300px;
+}
+
+
+.myMsg {
+    text-align: right;
+    padding: 5px;
+}
+
+.friendMsg {
+    text-align: left;
+    padding: 5px;
+}
+
+.msg div {
+    display: inline-block;
+}
+
+.myMsg .time {
+    margin-left: 10px;
+}
+
+.friendMsg .time {
+    float: right;
+    margin-top: 17px;
+}

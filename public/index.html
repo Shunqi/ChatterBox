@@ -5,25 +5,113 @@
   <title>ChatterBox</title>
   <link rel="stylesheet" href="/stylesheets/mystyles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/javascripts/myscripts.js"></script>
 </head>
 
 <body ng-app="chatterBox">
 
-  <div id="title">
-    <h3>Login</h3>
+  <!-- <div id="title">
+    <h3>ChatterBox</h3>
+  </div> -->
+
+  <div class="container">
+    <div ui-view></div>
   </div>
 
-  <div ng-controller="loginCtrl">
-      <label>Username:</label>
-      <input type="text" ng-model="user.username" />
-      </br>
-      </br>
-      <label></label>Password:</label>
-      <input type="password" ng-model="user.password">
-      </br>
-      <button type="submit" ng-click="login(user)">Sign in</button>
-  </div>
+  <script type="text/ng-template" id="login.html">
+    <!-- <div ng-controller="loginCtrl"> -->
+      <div id="login">
+        <h1>ChatterBox</h1>
+        <label>Username: &nbsp &nbsp</label>
+        <input type="text" ng-model="user.username" />
+        </br>
+        </br>
+        <label></label>Password: &nbsp &nbsp</label>
+        <input type="password" ng-model="user.password">
+        </br>
+        </br>
+        <button type="submit" ng-click="login(user)">Sign in</button>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="home.html">
+    <!-- <div ng-controller="homeCtrl"> -->
+    <div id="heading">
+      <div ng-click="displayUserInfo()" id="userId">
+        <img ng-src="{{ userIcon }}">
+        {{ username }}
+      </div>
+      <div id="chatterBox">
+        <h1>ChatterBox</h1>
+      </div>
+      <div id="button">
+        <button type="submit" ng-click="logout()">Log out</button>
+      </div>
+    </div>
+
+
+    <div id="main">
+
+      <div id="friendList">
+        <p>Friends:</p>
+        <div ng-repeat='friend in friends' class="friend">
+          <div id="{{ friend.id }}" ng-click="chat(friend.id, friend.name)">
+            <p>{{ friend.name + friend.newMsgNum }}</p>
+          </div>
+          <br>
+        </div>
+      </div>
+
+      <div id="panel">
+        <div id="userInfo" ng-show="showUserInfo" >
+          <div class="title">
+            <img ng-src="{{ userIcon }}">
+            {{ username }}
+          </div>
+
+          <div id="content">
+            <ul>
+                <li><label>Mobile number: &nbsp</label><input type="text" ng-model="user.mobileNumber"/></li>
+                <li><label>Home number: &nbsp &nbsp</label><input type="text" ng-model="user.homeNumber"/></li>
+                <li><label>Mailing address: &nbsp</label><input type="text" ng-model="user.address"/></li>
+            </ul>
+            <button type="submit" ng-click="saveUserInfo(user)">Save</button>
+          </div>
+        </div>
+
+
+        <div ng-show="showChat" >
+          <div class="title">
+              <img ng-src="{{ friendIcon }}">{{"  " + friendName + " (" + friendStatus + ")" }}
+          </div>
+
+          <div id="messages" >
+            <div class="message"ng-repeat="msg in messages" id="{{ msg._id }}">
+              <div ng-if="msg.senderId === userId" class="myMsg" confirmed-click="delete(msg._id)" ng-confirm-click="Delete the message?">
+                  <div class="msg">
+                    <div>{{ msg.message }}</div><div class="time">{{ "   " + msg.time }}</div>
+                  </div>
+              </div>
+              <div ng-if="msg.receiverId === userId" class="friendMsg">
+                  <div class="msg" >
+                    <img ng-src="{{ friendIcon }}">
+                    <div>{{ msg.message }}</div><div class="time">{{ "   " + msg.time }}</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="sendMessage">
+              <input id="messageInput" type="text" ng-model="messageToSend" ng-click="messageToSend = ''" ng-keypress="sendMessage($event, friendId, friendName, messageToSend)">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </script>
 
 </body>
 
